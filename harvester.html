@@ -9,17 +9,29 @@
 <template name="hello">
   {{greeting}}
 
+  {{>invoices}}
   {{>projects}}
 
 </template>
 
 <template name="projects">
-    <h2>Projects</h2>
+    <h1>Projects</h1>
     {{#each projects}}
             <div class="col-md-4" style="padding:1em;background:#f6f6f6;border:4px solid white;">
               <h6>ID: {{id}}</h6>
               <h3>Name: {{name}}</h3>
               <h5>Code: {{code}}</h5>
+            </div>
+    {{/each}}
+</template>
+
+<template name="invoices">
+    <h1>Invoices</h1>
+    {{#each invoice}}
+            <div class="col-md-4" style="padding:1em;background:#f6f6f6;border:4px solid white;">
+              <h6>ID: {{id}}</h6>
+              <h3>Name: {{client_name}}</h3>
+              <h5>Amount: {{amount}}</h5>
             </div>
     {{/each}}
 </template>
