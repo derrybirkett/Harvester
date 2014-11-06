@@ -1,34 +1,34 @@
+Projects = new Meteor.Collection(null);
+
+
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
-    return "Welcome to harvester. Project code is " + Session.get('projectname');;
+    var iam = Meteor.call('whoAmI', function(error, results) {
+        // console.log(results.data);
+          for(i=0;i<results.data.length;i++) {
+              var project = results.data[i].project;
+              console.log(project);
+              project_id = Projects.insert(project);
+
+          }
+    });
   };
 
-Template.hello.projects = function() {
-        var iam = Meteor.call('whoAmI', function(error, results) {
-            console.log(results.data);
-            return results.data;
-        });
-};
-
-  Template.hello.events({
-    'click input': function () {
-        var iam = Meteor.call('whoAmI', function(error, results) {
-            console.log(results);
-            Session.set('projectname',results.data[0].project.code);
-        });
+  Template.projects.helpers({
+    projects: function() {
+      return Projects.find();
     }
-
   });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
 
-        
+
     Meteor.methods({
         whoAmI: function () {
             this.unblock();
-            return Meteor.http.call("GET", "https://d2tstudio.harvestapp.com/projects", { 
+            return Meteor.http.call("GET", "https://d2tstudio.harvestapp.com/projects", {
                                     auth:     'derry@d2tstudio.com:JJqz2m3m6m.1' ,
                                     headers: {  'Content-Type': 'application/json',
                                                 'Accept': 'application/json' }

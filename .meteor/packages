@@ -7,3 +7,7 @@ standard-app-packages
 autopublish
 insecure
 http
+coffeescript
+mquandalle:jade
+mizzao:bootstrap-3
+
