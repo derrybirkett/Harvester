@@ -29,7 +29,7 @@ if (Meteor.isServer) {
         whoAmI: function () {
             this.unblock();
             return Meteor.http.call("GET", "https://d2tstudio.harvestapp.com/projects", {
-                                    auth:     'derry@d2tstudio.com:JJqz2m3m6m.1' ,
+                                    auth:     'derry@d2tstudio.com:pass' ,
                                     headers: {  'Content-Type': 'application/json',
                                                 'Accept': 'application/json' }
                             });
