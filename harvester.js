@@ -38,7 +38,7 @@ if (Meteor.isServer) {
         invoices: function () {
             this.unblock();
             return Meteor.http.call("GET", "https://d2tstudio.harvestapp.com/invoices", {
-                                    auth:     'derry@d2tstudio.com:JJqz2m3m6m.1' ,
+                                    auth:     'derry@d2tstudio.com:' ,
                                     headers: {  'Content-Type': 'application/json',
                                                 'Accept': 'application/json' }
                             });
@@ -46,7 +46,7 @@ if (Meteor.isServer) {
         projects: function () {
             this.unblock();
             return Meteor.http.call("GET", "https://d2tstudio.harvestapp.com/projects", {
-                                    auth:     'derry@d2tstudio.com:JJqz2m3m6m.1' ,
+                                    auth:     'derry@d2tstudio.com:' ,
                                     headers: {  'Content-Type': 'application/json',
                                                 'Accept': 'application/json' }
                             });
